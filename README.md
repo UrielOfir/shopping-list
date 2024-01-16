@@ -25,7 +25,25 @@ To set up this project on your local machine, follow these steps:
    cd shopping-list
    ```
 
-2. **Install frontend Dependencies**
+2. **Install categories backend Dependencies**
+
+   Navigate to the project categories backend directory and install the required dependencies:
+   
+   ```bash
+   npm install
+   ```
+
+3. **Run the frontend Application**
+
+   Once the dependencies are installed, you can start the frontend application:
+   
+   ```bash
+   npm run dev
+   ```
+
+This will start the development server. Open your browser and go to http://localhost:5173 to view the application.
+
+4. **Install frontend Dependencies**
 
    Navigate to the project frontend directory and install the required dependencies:
    
@@ -33,7 +51,7 @@ To set up this project on your local machine, follow these steps:
    npm install
    ```
 
-3. **Run the frontend Application**
+5. **Run the frontend Application**
 
    Once the dependencies are installed, you can start the frontend application:
    
