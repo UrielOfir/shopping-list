@@ -27,19 +27,20 @@ To set up this project on your local machine, follow these steps:
 
 2. **Install Dependencies**
 
-Navigate to the project directory and install the required dependencies:
+Navigate to the project frontend directory and install the required dependencies:
 
-bash
-Copy code
+```bash
 npm install
+```
 
 3. **Run the Application**
 
-Once the dependencies are installed, you can start the application:
+Once the dependencies are installed, you can start the frontend application:
 
-bash
-Copy code
+```bash
 npm run dev
+```
+
 This will start the development server. Open your browser and go to http://localhost:3000 to view the application.
 
 **Usage**
