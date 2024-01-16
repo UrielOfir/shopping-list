@@ -8,9 +8,11 @@ This project is a simple shopping list application built with React, Vite, and M
 
 Before you begin, ensure you have the following installed on your system:
 
-- [Node.js](https://nodejs.org/en/) (version 12 or higher)
+- [Node.js](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/) (usually comes with Node.js)
 - [Git](https://git-scm.com/)
+- [Dotnet](https://dotnet.microsoft.com/en-us/download)
+- [Docker](https://docs.docker.com/engine/install/)
 
 ## Installation
 
