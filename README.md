@@ -27,6 +27,11 @@ To set up this project on your local machine, follow these steps:
    cd shopping-list
    ```
 
+2. **Run the DB**
+   ```bash
+   sudo docker-compose up -d
+   ```
+
 2. **Install categories backend Dependencies**
 
    Navigate to the project products backend directory (backend/products) and install the required dependencies:
