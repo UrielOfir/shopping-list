@@ -3,6 +3,7 @@ import { DataSource } from 'typeorm';
 import { Category } from './entity/categories';
 import { Product } from './entity/product';
 import { createSeedData } from './seed/categories';
+import { Order } from './entity/order';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -11,19 +12,10 @@ const AppDataSource = new DataSource({
   username: 'postgres',
   password: 'P_1234',
   database: 'postgres',
-  entities: [Category, Product],
+  entities: [Category, Product, Order],
   synchronize: true,
   logging: true,
 });
-
-// to initialize the initial connection with the database, register all entities
-// and "synchronize" database schema, call "initialize()" method of a newly created database
-// once in your application bootstrap
-// AppDataSource.initialize()
-//   .then(() => {
-//     // here you can start to work with your database
-//   })
-//   .catch((error) => console.log(error));
 
 AppDataSource.initialize()
   .then(() => {

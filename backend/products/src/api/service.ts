@@ -1,5 +1,6 @@
 import { DataSource, Repository } from 'typeorm';
 import AppDataSource from '../typeorm';
+import { Order } from '../typeorm/entity/order';
 import { Product } from '../typeorm/entity/product';
 import { Category } from '../typeorm/entity/categories';
 
@@ -9,15 +10,17 @@ export const initializeSource = async (): Promise<DataSource> => {
 };
 
 export const getCategoryRepository = async (): Promise<Repository<Category>> => {
-  // const source = await initializeSource();
   return AppDataSource.getRepository(Category);
 };
 
 export const getProductRepository = async (): Promise<Repository<Product>> => {
-  // const source = await initializeSource();
-
   return AppDataSource.getRepository(Product);
 };
+
+export const getOrderRepository = async (): Promise<Repository<Order>> => {
+  return AppDataSource.getRepository(Order);
+};
+
 
 export const getCategories = async (): Promise<Category[]> => {
   const categoryRepository = await getCategoryRepository();

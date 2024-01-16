@@ -9,14 +9,6 @@ export class Product extends BaseEntity {
   @Column()
   name: string;
 
-  @Column()
-  description: string;
-
-  @Column('decimal', { precision: 10, scale: 2 })
-  price: number;
-
-  // Other product fields...
-
   @ManyToOne(() => Category, (category) => category.products)
   category: Category;
 }

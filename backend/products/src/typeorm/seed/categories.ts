@@ -1,169 +1,20 @@
 import { Category } from '../entity/categories';
 import { Product } from '../entity/product';
-import { getCategoryRepository, getProductRepository } from '../../api/service';
+import { Order } from '../entity/order';
+import { getCategoryRepository, getProductRepository, getOrderRepository } from '../../api/service';
 
-const products = [
-  {
-    name: 'All-Purpose Cleaner',
-    description: 'Effective on all surfaces',
-    price: 5.99,
-    categoryIndex: 0,
-  },
-  {
-    name: 'Window Cleaner',
-    description: 'Streak-free shine',
-    price: 4.5,
-    categoryIndex: 0,
-  },
-  {
-    name: 'Floor Polish',
-    description: 'Long-lasting gloss',
-    price: 8.25,
-    categoryIndex: 0,
-  },
-  {
-    name: 'Bathroom Disinfectant',
-    description: 'Kills 99.9% of germs',
-    price: 6.75,
-    categoryIndex: 0,
-  },
-  {
-    name: 'Dish Soap',
-    description: 'Gentle on hands, tough on grease',
-    price: 3.99,
-    categoryIndex: 0,
-  },
-  {
-    name: 'Feta Cheese',
-    description: 'Crumble over salads',
-    price: 2.99,
-    categoryIndex: 1,
-  },
-  {
-    name: 'Cheddar Cheese',
-    description: 'Rich and smooth aged cheddar',
-    price: 4.5,
-    categoryIndex: 1,
-  },
-  {
-    name: 'Mozzarella Cheese',
-    description: 'Perfect for pizzas',
-    price: 3.25,
-    categoryIndex: 1,
-  },
-  {
-    name: 'Gouda Cheese',
-    description: 'Sweet and creamy',
-    price: 5.75,
-    categoryIndex: 1,
-  },
-  {
-    name: 'Parmesan Cheese',
-    description: 'Grated for pasta dishes',
-    price: 6.99,
-    categoryIndex: 1,
-  },
-  {
-    name: 'Apples',
-    description: 'Crisp and juicy',
-    price: 1.99,
-    categoryIndex: 2,
-  },
-  {
-    name: 'Oranges',
-    description: 'Rich in Vitamin C',
-    price: 2.5,
-    categoryIndex: 2,
-  },
-  {
-    name: 'Lettuce',
-    description: 'Fresh green leaves',
-    price: 1.25,
-    categoryIndex: 2,
-  },
-  {
-    name: 'Tomatoes',
-    description: 'Ripe and flavorful',
-    price: 2.75,
-    categoryIndex: 2,
-  },
-  {
-    name: 'Cucumbers',
-    description: 'Crunchy and refreshing',
-    price: 1.99,
-    categoryIndex: 2,
-  },
-  {
-    name: 'Salmon Fillet',
-    description: 'Fresh and tender',
-    price: 10.99,
-    categoryIndex: 3,
-  },
-  {
-    name: 'Chicken Breast',
-    description: 'Lean and versatile',
-    price: 7.5,
-    categoryIndex: 3,
-  },
-  {
-    name: 'Ground Beef',
-    description: 'Perfect for burgers',
-    price: 8.25,
-    categoryIndex: 3,
-  },
-  {
-    name: 'Pork Chops',
-    description: 'Juicy and flavorful',
-    price: 9.75,
-    categoryIndex: 3,
-  },
-  {
-    name: 'Tilapia',
-    description: 'Mild and flaky',
-    price: 6.99,
-    categoryIndex: 3,
-  },
-  {
-    name: 'Sourdough Bread',
-    description: 'Crusty and tangy',
-    price: 3.99,
-    categoryIndex: 4,
-  },
-  {
-    name: 'Croissants',
-    description: 'Buttery and flaky',
-    price: 4.5,
-    categoryIndex: 4,
-  },
-  {
-    name: 'Chocolate Cake',
-    description: 'Rich and moist',
-    price: 5.25,
-    categoryIndex: 4,
-  },
-  {
-    name: 'Bagels',
-    description: 'Chewy and delicious',
-    price: 2.75,
-    categoryIndex: 4,
-  },
-  {
-    name: 'Apple Pie',
-    description: 'Homemade style with a flaky crust',
-    price: 6.99,
-    categoryIndex: 4,
-  },
-];
+const products: Product[] = [];
 
 export async function createSeedData() {
   const categoryNames = ['מוצרי ניקיון', 'גבינות', 'ירקות ופירות', 'בשר ודגים', 'מאפים'];
 
   const categoryRepository = await getCategoryRepository();
   const productRepository = await getProductRepository();
+  const orderRepository = await getOrderRepository();
+
   // Check and create new categories
   const existingCategories = await categoryRepository.find();
-  const existingProducts = await productRepository.find();
-  if (existingCategories.length || existingProducts.length) {
+  if (existingCategories.length) {
     console.log('Categories and/or Products already exist in the database.');
     return;
   }
@@ -174,30 +25,13 @@ export async function createSeedData() {
     return category;
   });
 
-  const productEntities = products.map((productData) => {
-    const product = new Product();
-    product.name = productData.name;
-    product.description = productData.description;
-    product.price = productData.price;
-    product.category = categories[productData.categoryIndex];
-    return product;
-  });
+  const orders: Order[] = []
 
   try {
-    // Initialize the DataSource before running the seeding script
-
-    // Save the categories to the database
-
-    categoryRepository.save(categories);
-
-    // Save the products to the database
-
-    await productRepository.save(productEntities);
+    await categoryRepository.save(categories);
 
     console.log('Seeding completed successfully.');
   } catch (error) {
     console.error('Error seeding database:', error);
   }
 }
-
-// createSeedData();
