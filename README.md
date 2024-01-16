@@ -21,8 +21,8 @@ To set up this project on your local machine, follow these steps:
    First, clone the project repository to your local machine using Git:
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/UrielOfir/shopping-list.git
+   cd shopping-list
    ```
 
 2. **Install Dependencies**
