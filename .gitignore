@@ -1,0 +1,47 @@
+# .NET
+bin/
+obj/
+net8.0/
+*.user
+*.suo
+*.userprefs
+*.sln.docstates
+*.cache
+*.csproj.user
+*.pubxml
+*.pubxml.user
+*.pfx
+*.publishsettings
+
+# Vite
+node_modules/
+dist/
+*.local
+.cache/
+temp/
+out/
+*.log
+logs/
+*.lock
+package-lock.json
+yarn.lock
+
+# IDEs
+.vs/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sln.DotSettings.user
+*.sw?
+.idea/
+*.iml
+*.ipr
+*.iws
+*.bak.*
+*.bak
+*.un~
+Session.vim
+.netrwhist
+*~
