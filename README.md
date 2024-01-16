@@ -32,7 +32,7 @@ To set up this project on your local machine, follow these steps:
    sudo docker-compose up -d
    ```
 
-2. **Install products backend Dependencies**
+3. **Install products backend Dependencies**
 
    Navigate to the project products backend directory (backend/products) and install the required dependencies:
    
@@ -41,7 +41,7 @@ To set up this project on your local machine, follow these steps:
    npm install
    ```
 
-3. **Run the products backend Application**
+4. **Run the products backend Application**
 
    Once the dependencies are installed, you can start the products backend application:
    
@@ -49,9 +49,16 @@ To set up this project on your local machine, follow these steps:
    npm run dev
    ```
 
-This will start the development server. Open your browser and go to http://localhost:5173 to view the application.
+5. **Run the orders backend Application**
 
-4. **Install frontend Dependencies**
+   Once the dependencies are installed, you can start the  orders backend application:
+   
+   ```bash
+   cd backend/orders
+   dotnet run
+   ```
+
+5. **Install frontend Dependencies**
 
    Navigate to the project frontend directory and install the required dependencies:
    
@@ -59,7 +66,7 @@ This will start the development server. Open your browser and go to http://local
    npm install
    ```
 
-5. **Run the frontend Application**
+6. **Run the frontend Application**
 
    Once the dependencies are installed, you can start the frontend application:
    
