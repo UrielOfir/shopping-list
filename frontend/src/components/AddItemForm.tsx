@@ -22,6 +22,7 @@ const AddItemForm: React.FC = () => {
     fetchCategoriesFromServer()
       .then((categories) => {
         dispatch({ type: GeneralActionsEnum.SET_CATEGORIES, categories });
+        console.log("Categories fetched:", categories);
       })
       .catch((error) => {
         console.error("Failed to fetch categories:", error);
