@@ -46,9 +46,9 @@ This will start the development server. Open your browser and go to http://local
 ## Usage
 The application has a simple interface:
 
-- Add Item Form: Use this form to add new items to the shopping list. Enter the item name and select a category before clicking the "Add Item" button.
-- Shopping List: View the list of added items along with their categories.
+- **Add Item Form**: Use this form to add new items to the shopping list. Enter the item name and select a category before clicking the "Add Item" button.
+- **Shopping List**: View the list of added items along with their categories.
 Total Items Display: Shows the total number of items in the shopping list.
 
-**License**
+## License
 MIT License
