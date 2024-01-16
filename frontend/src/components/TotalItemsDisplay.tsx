@@ -4,7 +4,7 @@ import {useTypedSelector} from "../store";
 
 const TotalItemsDisplay: React.FC = ( ) => {
   const {items } = useTypedSelector((state) => state.reducer)
-  const [count, setCount] = useState('')
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     const sumOfLengths = Object.values(items).reduce((accumulator, currentArray) => {

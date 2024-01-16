@@ -1,16 +1,16 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import {
-  TextField,
-  Button,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  SelectChangeEvent,
-  FormHelperText,
+    TextField,
+    Button,
+    Select,
+    MenuItem,
+    FormControl,
+    InputLabel,
+    SelectChangeEvent,
+    FormHelperText, Grid,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { useActions } from "../store";
+import { useDispatch } from "react-redux";
+import {useActions, useTypedSelector} from "../store";
 import { GeneralActionsEnum } from "../store/reducer";
 import { fetchCategoriesFromServer } from "../services/api";
 
@@ -20,16 +20,17 @@ const AddItemForm: React.FC = () => {
 
   useEffect(() => {
     fetchCategoriesFromServer()
-      .then((categories) => {
-        dispatch({ type: GeneralActionsEnum.SET_CATEGORIES, categories });
+      .then((categories ) => {
+        dispatch({ type: GeneralActionsEnum.SET_CATEGORIES,categories: categories.map((item:any)=> item.name) });
         console.log("Categories fetched:", categories);
       })
       .catch((error) => {
         console.error("Failed to fetch categories:", error);
       });
-  }, [dispatch]);
+  }, []);
 
-  const categories = useSelector((state: unknown) => state.reducer.categories);
+    const {categories } = useTypedSelector((state) => state.reducer)
+
   const [itemName, setItemName] = useState("");
   const [categoryName, setCategoryName] = useState("");
   const [error, setError] = useState(false);
@@ -44,8 +45,12 @@ const AddItemForm: React.FC = () => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
+      <Grid item display="flex" flexDirection="column">
+
+
+    <form onSubmit={handleSubmit} style={{display:'flex', flexDirection:'row'}}>
       <TextField
+          style={{marginRight:4, width:331}}
         label="Item Name"
         variant="outlined"
         value={itemName}
@@ -54,7 +59,7 @@ const AddItemForm: React.FC = () => {
         }
       />
       {/* Category Selector */}
-      <FormControl fullWidth>
+      <FormControl fullWidth style={{marginRight:4}}>
         <InputLabel id="category-select-label">Category</InputLabel>
         <Select
           labelId="category-select-label"
@@ -81,6 +86,8 @@ const AddItemForm: React.FC = () => {
         Add Item
       </Button>
     </form>
+      </Grid>
+
   );
 };
 

@@ -1,24 +1,26 @@
 import React from 'react';
-import { List, ListItem, ListItemText } from '@mui/material';
+import {Grid, Typography } from '@mui/material';
 import {useTypedSelector} from "../store";
 
 
 const ShoppingList: React.FC = () => {
   const {items } = useTypedSelector((state) => state.reducer)
-  console.log(items)
   return (
-    <List>
-      <ul>
-        {Object.entries(items).map(([category, strings]) => (
-            <ListItem key={category}>
-              <ListItemText>
+    <Grid item display="flex" flexDirection="row">
+        {Object.entries(items).map(([category, items]) => (
+            <Grid m={2} key={category} >
+                <Typography mb={3} key={category}>
+                    {category} -  {items.length} מוצרים
+                </Typography>
+                {items.map((item:string)=>
+                    <Typography key={Math.random()} justifyItems="start">
+                        {item }
+                    </Typography>
+                )}
+            </Grid>
 
-              <strong>{category}:</strong> {strings.join(', ')} -- {strings.length} items
-              </ListItemText>
-            </ListItem>
         ))}
-      </ul>
-    </List>
+    </Grid>
   );
 }
 
