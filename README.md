@@ -8,9 +8,11 @@ This project is a simple shopping list application built with React, Vite, and M
 
 Before you begin, ensure you have the following installed on your system:
 
-- [Node.js](https://nodejs.org/en/) (version 12 or higher)
+- [Node.js](https://nodejs.org/en/)
 - [npm](https://www.npmjs.com/) (usually comes with Node.js)
 - [Git](https://git-scm.com/)
+- [Dotnet](https://dotnet.microsoft.com/en-us/download)
+- [Docker](https://docs.docker.com/engine/install/)
 
 ## Installation
 
@@ -25,25 +27,38 @@ To set up this project on your local machine, follow these steps:
    cd shopping-list
    ```
 
-2. **Install categories backend Dependencies**
+2. **Run the DB**
+   ```bash
+   sudo docker-compose up -d
+   ```
 
-   Navigate to the project categories backend directory and install the required dependencies:
+3. **Install products backend Dependencies**
+
+   Navigate to the project products backend directory (backend/products) and install the required dependencies:
    
    ```bash
+   cd backend/products
    npm install
    ```
 
-3. **Run the frontend Application**
+4. **Run the products backend Application**
 
-   Once the dependencies are installed, you can start the frontend application:
+   Once the dependencies are installed, you can start the products backend application:
    
    ```bash
    npm run dev
    ```
 
-This will start the development server. Open your browser and go to http://localhost:5173 to view the application.
+5. **Run the orders backend Application**
 
-4. **Install frontend Dependencies**
+   Once the dependencies are installed, you can start the  orders backend application:
+   
+   ```bash
+   cd backend/orders
+   dotnet run
+   ```
+
+5. **Install frontend Dependencies**
 
    Navigate to the project frontend directory and install the required dependencies:
    
@@ -51,7 +66,7 @@ This will start the development server. Open your browser and go to http://local
    npm install
    ```
 
-5. **Run the frontend Application**
+6. **Run the frontend Application**
 
    Once the dependencies are installed, you can start the frontend application:
    
