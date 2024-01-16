@@ -43,7 +43,7 @@ npm run dev
 
 This will start the development server. Open your browser and go to http://localhost:5173 to view the application.
 
-**Usage**
+### Usage
 The application has a simple interface:
 
 - Add Item Form: Use this form to add new items to the shopping list. Enter the item name and select a category before clicking the "Add Item" button.
