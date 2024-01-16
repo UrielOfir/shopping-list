@@ -23,6 +23,7 @@ To set up this project on your local machine, follow these steps:
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
    cd your-repo-name
+   ```
 
 2. **Install Dependencies**
 
