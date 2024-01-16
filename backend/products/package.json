@@ -17,6 +17,7 @@
     "start": "ts-node src/index.ts",
     "dev": "nodemon src/index.ts",
     "build": "tsc -p .",
+    "docker:createdb": "docker compose up -d",
     "seed": "ts-node src/typeorm/seed/categories.ts"
   }
 }

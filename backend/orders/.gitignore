@@ -1,0 +1,70 @@
+# Built application files
+*.exe
+*.dll
+*.so
+*.dylib
+*.winmd
+*.app
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Various IDEs and editors
+.vs/
+.vscode/
+*.swp
+*.swo
+*~
+*.user
+*.suo
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.userosscache
+*.vbproj.user
+
+# MonoDevelop
+.monodevelop/
+.monodevelop-*
+.monotouch-*
+.mono-*
+
+# Tools
+_ReSharper*/
+_TeamCity*
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# npm packages
+node_modules/
+
+# Visual Studio Code
+.history/
