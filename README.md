@@ -29,7 +29,7 @@ To set up this project on your local machine, follow these steps:
 
 2. **Install categories backend Dependencies**
 
-   Navigate to the project categories backend directory and install the required dependencies:
+   Navigate to the project products backend directory (backend/products) and install the required dependencies:
    
    ```bash
    npm install
