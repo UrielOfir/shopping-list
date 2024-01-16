@@ -32,17 +32,18 @@ To set up this project on your local machine, follow these steps:
    sudo docker-compose up -d
    ```
 
-2. **Install categories backend Dependencies**
+2. **Install products backend Dependencies**
 
    Navigate to the project products backend directory (backend/products) and install the required dependencies:
    
    ```bash
+   cd backend/products
    npm install
    ```
 
-3. **Run the frontend Application**
+3. **Run the products backend Application**
 
-   Once the dependencies are installed, you can start the frontend application:
+   Once the dependencies are installed, you can start the products backend application:
    
    ```bash
    npm run dev
