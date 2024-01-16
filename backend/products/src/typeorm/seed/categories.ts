@@ -1,6 +1,6 @@
-import AppDataSource from '..';
 import { Category } from '../entity/categories';
 import { Product } from '../entity/product';
+import { getCategoryRepository, getProductRepository } from '../../api/service';
 
 const products = [
   {
@@ -155,8 +155,19 @@ const products = [
   },
 ];
 
-async function createSeedData() {
+export async function createSeedData() {
   const categoryNames = ['מוצרי ניקיון', 'גבינות', 'ירקות ופירות', 'בשר ודגים', 'מאפים'];
+
+  const categoryRepository = await getCategoryRepository();
+  const productRepository = await getProductRepository();
+  // Check and create new categories
+  const existingCategories = await categoryRepository.find();
+  const existingProducts = await productRepository.find();
+  if (existingCategories.length || existingProducts.length) {
+    console.log('Categories and/or Products already exist in the database.');
+    return;
+  }
+
   const categories = categoryNames.map((name) => {
     const category = new Category();
     category.name = name;
@@ -176,18 +187,17 @@ async function createSeedData() {
     // Initialize the DataSource before running the seeding script
 
     // Save the categories to the database
-    await AppDataSource.manager.save(categories);
+
+    categoryRepository.save(categories);
 
     // Save the products to the database
-    await AppDataSource.manager.save(productEntities);
+
+    await productRepository.save(productEntities);
 
     console.log('Seeding completed successfully.');
   } catch (error) {
     console.error('Error seeding database:', error);
-  } finally {
-    // Close the DataSource connection when done
-    await AppDataSource.destroy();
   }
 }
 
-createSeedData();
+// createSeedData();

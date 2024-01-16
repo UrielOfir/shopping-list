@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { Category } from './entity/categories';
 import { Product } from './entity/product';
+import { createSeedData } from './seed/categories';
 
 const AppDataSource = new DataSource({
   type: 'postgres',
@@ -12,7 +13,7 @@ const AppDataSource = new DataSource({
   database: 'postgres',
   entities: [Category, Product],
   synchronize: true,
-  logging: false,
+  logging: true,
 });
 
 // to initialize the initial connection with the database, register all entities
@@ -27,6 +28,7 @@ const AppDataSource = new DataSource({
 AppDataSource.initialize()
   .then(() => {
     console.log('Data Source has been initialized!');
+    createSeedData();
   })
   .catch((err) => {
     console.error('Error during Data Source initialization:', err);
