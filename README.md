@@ -41,7 +41,7 @@ Once the dependencies are installed, you can start the frontend application:
 npm run dev
 ```
 
-This will start the development server. Open your browser and go to http://localhost:3000 to view the application.
+This will start the development server. Open your browser and go to http://localhost:5173 to view the application.
 
 **Usage**
 The application has a simple interface:
