@@ -38,3 +38,9 @@ export const getProductById = async (productId: string): Promise<Product | null>
     where: { productId },
   });
 };
+
+export const addProduct = async (productData: Partial<Product>): Promise<Product> => {
+  const productRepository = await getProductRepository();
+  const product = productRepository.create(productData);
+  return productRepository.save(product);
+};
