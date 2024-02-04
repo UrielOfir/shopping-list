@@ -1,6 +1,7 @@
 import React from 'react';
 import {Grid, Typography } from '@mui/material';
 import {useTypedSelector} from "../store";
+import { Item } from '../store/reducer';
 
 
 const ShoppingList: React.FC = () => {
@@ -12,9 +13,9 @@ const ShoppingList: React.FC = () => {
                 <Typography mb={3} key={category}>
                     {category} -  {items.length} מוצרים
                 </Typography>
-                {items.map((item:string)=>
+                {items.map((item:Item)=>
                     <Typography key={Math.random()} justifyItems="start">
-                        {item }
+                        {item.name } ({item.quantity})
                     </Typography>
                 )}
             </Grid>

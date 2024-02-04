@@ -3,6 +3,11 @@ export enum GeneralActionsEnum {
   SET_CATEGORIES = "SET_CATEGORIES",
 }
 
+export interface Item {
+  name: string;
+  quantity: number;
+}
+
 export interface addItemActionType {
   type: GeneralActionsEnum.ADD_ITEM;
   itemName: string;
@@ -15,7 +20,7 @@ export interface setCategoriesActionType {
 }
 
 export interface State {
-  items: { [category: string]: string[] };
+  items: { [category: string]: Item[] };
   categories: string[];
 }
 
@@ -29,12 +34,24 @@ export const reducer = (
   action: addItemActionType | setCategoriesActionType
 ) => {
   switch (action.type) {
+    //TODO: if item already exists, add to quantity
     case GeneralActionsEnum.ADD_ITEM: {
-      const item_list: string[] = state.items[action.categoryName] || [];
-      item_list.push(action.itemName);
+      const item_list: Item[] = [...(state.items[action.categoryName] || [])];
+      const itemIndex = item_list.findIndex(item => item.name === action.itemName);
+    
+      if (itemIndex !== -1) {
+        // If the item already exists, create a new item with incremented quantity
+        const newItem = { ...item_list[itemIndex], quantity: item_list[itemIndex].quantity + 1 };
+        // Replace the existing item with the new item
+        item_list[itemIndex] = newItem;
+      } else {
+        // If the item doesn't exist, add it with a quantity of 1
+        item_list.push({ name: action.itemName, quantity: 1 });
+      }
+    
       return {
         ...state,
-        items: { ...state.items, [action.categoryName]: [...item_list] },
+        items: { ...state.items, [action.categoryName]: item_list },
       };
     }
     case GeneralActionsEnum.SET_CATEGORIES: {
