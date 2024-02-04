@@ -6,7 +6,7 @@ import { Button, Grid } from "@mui/material";
 import OrderForm from "./components/OrderForm.tsx";
 
 const App: React.FC = () => {
-  const [showItems, setShowItems] = useState(false);
+  const [choosingItems, setShowItems] = useState(true);
 
   return (
     <Grid
@@ -17,16 +17,16 @@ const App: React.FC = () => {
       alignItems="center"
       style={{ minHeight: "100vh" }}
     >
-      {showItems ? (
-        <OrderForm />
-      ) : (
+      {choosingItems ? (
         <>
-          <AddItemForm />
           <TotalItemsDisplay />
+          <AddItemForm />
           <ShoppingList />
+          <Button onClick={() => setShowItems(!choosingItems)}>השלם</Button>
         </>
+      ) : (
+        <OrderForm />
       )}
-      <Button onClick={() => setShowItems(!showItems)}>השלם</Button>
     </Grid>
   );
 };
