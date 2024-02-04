@@ -7,18 +7,18 @@ import {useTypedSelector} from "../store";
 import {addOrderToServer} from "../services/api.ts";
 
 export interface FormData {
-    name: string;
+    customerName: string;
     email: string;
     address: string;
 }
 
 export interface OrderData extends FormData {
-    items: string
+    orderItemsJson: string
 }
 
 const OrderForm: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
-        name: '',
+        customerName: '',
         email: '',
         address: '',
     });
@@ -31,7 +31,7 @@ const OrderForm: React.FC = () => {
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const data:OrderData = {...formData, items: JSON.stringify(items)}
+        const data:OrderData = {...formData, orderItemsJson: JSON.stringify(items)}
         console.log('Form submitted:', data);
         await addOrderToServer(data)
     };
@@ -46,10 +46,10 @@ const OrderForm: React.FC = () => {
                     <TextField
                         fullWidth
                         label="Name"
-                        name="name"
+                        name="customerName"
                         variant="outlined"
                         margin="normal"
-                        value={formData.name}
+                        value={formData.customerName}
                         onChange={handleChange}
                         required
                     />
